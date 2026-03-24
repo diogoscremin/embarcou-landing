@@ -3,265 +3,328 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embarcou — Plataforma Inteligente de Gestão de Frete</title>
-  <meta name="description" content="Cotação, contratação e gestão de frete para e-commerces. Integre todas as suas transportadoras em uma única plataforma. Regras automáticas, cotação em milissegundos.">
+  <title>Embarcou — Plataforma Inteligente de Gestão de Frete para E-commerce</title>
+  <meta name="description" content="Cotação de frete em milissegundos, regras automáticas, integração com qualquer e-commerce. Gerencie todas as suas transportadoras em um só lugar.">
+  <meta name="keywords" content="gestão de frete, cotação de frete, TMS, e-commerce, transportadora, Shopify, frete grátis, regras de frete">
+  <meta property="og:title" content="Embarcou — Plataforma Inteligente de Gestão de Frete">
+  <meta property="og:description" content="Cotação em milissegundos, regras automáticas, integração com qualquer e-commerce.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://embarcou.com.br">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand: #10b981;
-      --brand-dark: #059669;
-      --brand-light: #d1fae5;
-      --brand-glow: rgba(16, 185, 129, 0.15);
-      --dark: #0f172a;
-      --dark-soft: #1e293b;
-      --gray-700: #334155;
-      --gray-500: #64748b;
-      --gray-400: #94a3b8;
-      --gray-200: #e2e8f0;
-      --gray-100: #f1f5f9;
-      --white: #ffffff;
+      --brand-1: #FF6B2C;
+      --brand-2: #FF8F5E;
+      --brand-dark: #E85A1E;
+      --brand-glow: rgba(255, 107, 44, 0.12);
+      --brand-glow-strong: rgba(255, 107, 44, 0.25);
+      --accent: #1B1464;
+      --accent-soft: #2D2380;
+      --dark: #0D0B21;
+      --dark-card: #161330;
+      --gray-700: #4A4669;
+      --gray-500: #7B7794;
+      --gray-400: #9E9BB5;
+      --gray-200: #E4E2F0;
+      --gray-100: #F5F4FA;
+      --white: #FFFFFF;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'Outfit', system-ui, sans-serif;
       color: var(--dark);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* ── Nav ───────────────────────────────────────────── */
+    /* ── Nav ───────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--gray-200);
-      transition: box-shadow 0.3s;
     }
-    nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(13,11,33,0.06); }
     .nav-inner {
-      max-width: 1120px; margin: 0 auto;
-      padding: 0 24px; height: 64px;
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 28px; height: 68px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px; font-weight: 700; color: var(--dark);
-      text-decoration: none; display: flex; align-items: center; gap: 10px;
+      font-size: 24px; font-weight: 800; color: var(--dark);
+      text-decoration: none; display: flex; align-items: center; gap: 12px;
+      letter-spacing: -0.02em;
     }
-    .nav-logo-icon {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--brand); display: flex; align-items: center; justify-content: center;
-    }
-    .nav-logo-icon svg { width: 18px; height: 18px; color: white; }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
     .nav-links a {
       font-size: 14px; color: var(--gray-500); text-decoration: none;
       font-weight: 500; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--dark); }
+    .btn-nav {
+      padding: 10px 22px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      color: white; font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: all 0.2s;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 12px var(--brand-glow);
+    }
+    .btn-nav:hover { background: linear-gradient(135deg, var(--brand-dark), var(--brand-1)); transform: translateY(-1px); }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 24px; border-radius: 10px;
-      background: var(--brand); color: white;
-      font-size: 14px; font-weight: 600;
+      padding: 14px 32px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      color: white; font-size: 15px; font-weight: 600;
       text-decoration: none; border: none; cursor: pointer;
-      transition: all 0.2s; box-shadow: 0 2px 8px var(--brand-glow);
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px var(--brand-glow-strong);
     }
-    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 4px 16px var(--brand-glow); }
-    .btn-secondary {
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--brand-glow-strong);
+    }
+    .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 24px; border-radius: 10px;
-      background: var(--white); color: var(--dark);
-      font-size: 14px; font-weight: 600;
-      text-decoration: none; border: 1px solid var(--gray-200); cursor: pointer;
-      transition: all 0.2s;
+      padding: 14px 32px; border-radius: 12px;
+      background: transparent; color: var(--dark);
+      font-size: 15px; font-weight: 600;
+      text-decoration: none; border: 2px solid var(--gray-200);
+      transition: all 0.2s; cursor: pointer;
     }
-    .btn-secondary:hover { border-color: var(--gray-400); background: var(--gray-100); }
+    .btn-ghost:hover { border-color: var(--brand-1); color: var(--brand-1); }
 
-    /* ── Hero ──────────────────────────────────────────── */
+    /* ── Hero ──────────────────────────────────────── */
     .hero {
-      padding: 140px 24px 80px;
+      padding: 160px 28px 100px;
       text-align: center;
       position: relative;
+      background: linear-gradient(180deg, var(--gray-100) 0%, var(--white) 100%);
       overflow: hidden;
     }
     .hero::before {
-      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 800px; border-radius: 50%;
+      content: ''; position: absolute;
+      top: -300px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
       background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: -200px; left: -150px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,20,100,0.05) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; border-radius: 100px;
-      background: var(--brand-light); color: var(--brand-dark);
-      font-size: 13px; font-weight: 600; margin-bottom: 24px;
+      padding: 8px 20px; border-radius: 100px;
+      background: var(--white); color: var(--brand-1);
+      font-size: 13px; font-weight: 600; margin-bottom: 28px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     }
+    .hero-badge span { color: var(--gray-500); }
     .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(36px, 5.5vw, 64px);
-      font-weight: 700; line-height: 1.1;
-      color: var(--dark); max-width: 720px; margin: 0 auto 20px;
-      letter-spacing: -0.02em;
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 800; line-height: 1.05;
+      color: var(--dark); max-width: 760px; margin: 0 auto 24px;
+      letter-spacing: -0.03em;
     }
-    .hero h1 span { color: var(--brand); }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-dark));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .hero p {
       font-size: 18px; color: var(--gray-500);
-      max-width: 540px; margin: 0 auto 36px;
-      line-height: 1.6;
+      max-width: 520px; margin: 0 auto 40px;
+      line-height: 1.65; font-weight: 400;
     }
-    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .hero-stats {
-      display: flex; gap: 48px; justify-content: center; margin-top: 64px;
-      padding-top: 48px; border-top: 1px solid var(--gray-200);
+    .hero-buttons {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
     }
-    .hero-stat-value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 32px; font-weight: 700; color: var(--dark);
-    }
-    .hero-stat-label { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
 
-    /* ── Features ──────────────────────────────────────── */
+    /* ── Metrics ───────────────────────────────────── */
+    .metrics {
+      padding: 0 28px;
+      position: relative; z-index: 2; margin-top: -10px;
+    }
+    .metrics-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--gray-200); border-radius: 20px; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(13,11,33,0.08);
+    }
+    .metric {
+      background: var(--white); padding: 32px 24px; text-align: center;
+    }
+    .metric-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px; font-weight: 500; color: var(--dark);
+    }
+    .metric-value .unit { font-size: 16px; color: var(--brand-1); }
+    .metric-label { font-size: 13px; color: var(--gray-500); margin-top: 6px; font-weight: 500; }
+
+    /* ── Features ──────────────────────────────────── */
     .features {
-      padding: 100px 24px;
-      max-width: 1120px; margin: 0 auto;
+      padding: 120px 28px;
+      max-width: 1160px; margin: 0 auto;
     }
-    .features-header {
-      text-align: center; margin-bottom: 64px;
+    .section-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--brand-1); margin-bottom: 12px;
     }
-    .features-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px; font-weight: 700; color: var(--dark); margin-bottom: 12px;
+    .section-title {
+      font-size: 40px; font-weight: 800; color: var(--dark);
+      margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.15;
     }
-    .features-header p { font-size: 16px; color: var(--gray-500); max-width: 480px; margin: 0 auto; }
+    .section-desc { font-size: 17px; color: var(--gray-500); margin-bottom: 56px; max-width: 480px; }
     .features-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
-    .feature-card {
-      padding: 32px; border-radius: 16px;
+    .f-card {
+      padding: 36px 28px; border-radius: 20px;
       border: 1px solid var(--gray-200);
       background: var(--white);
-      transition: all 0.3s;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; overflow: hidden;
     }
-    .feature-card:hover {
-      border-color: var(--brand);
-      box-shadow: 0 8px 32px var(--brand-glow);
-      transform: translateY(-4px);
+    .f-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      opacity: 0; transition: opacity 0.3s;
     }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 12px;
+    .f-card:hover {
+      border-color: transparent;
+      box-shadow: 0 12px 48px rgba(13,11,33,0.1);
+      transform: translateY(-6px);
+    }
+    .f-card:hover::before { opacity: 1; }
+    .f-icon {
+      width: 52px; height: 52px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px; font-size: 24px;
+      margin-bottom: 20px; font-size: 26px;
     }
-    .feature-card h3 {
-      font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 8px;
+    .f-card h3 {
+      font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px;
+      letter-spacing: -0.01em;
     }
-    .feature-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+    .f-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
 
-    /* ── How it works ─────────────────────────────────── */
+    /* ── How ───────────────────────────────────────── */
     .how {
-      padding: 100px 24px;
-      background: var(--gray-100);
+      padding: 120px 28px;
+      background: var(--dark);
+      color: var(--white);
+      position: relative; overflow: hidden;
     }
-    .how-inner { max-width: 1120px; margin: 0 auto; }
-    .how-header { text-align: center; margin-bottom: 64px; }
-    .how-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px; font-weight: 700; color: var(--dark); margin-bottom: 12px;
+    .how::before {
+      content: ''; position: absolute; top: -200px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,44,0.08) 0%, transparent 70%);
     }
+    .how-inner { max-width: 1160px; margin: 0 auto; position: relative; }
+    .how .section-label { color: var(--brand-2); }
+    .how .section-title { color: var(--white); }
+    .how .section-desc { color: var(--gray-400); }
     .how-steps {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
     }
-    .how-step { text-align: center; }
-    .how-step-number {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--brand); color: white;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 20px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
+    .step { position: relative; }
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 48px; font-weight: 500;
+      color: var(--brand-1); opacity: 0.5; margin-bottom: 12px;
     }
-    .how-step h3 { font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
-    .how-step p { font-size: 13px; color: var(--gray-500); line-height: 1.5; }
+    .step h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--gray-400); line-height: 1.6; }
 
-    /* ── Integrations ─────────────────────────────────── */
+    /* ── Integrations ─────────────────────────────── */
     .integrations {
-      padding: 100px 24px;
-      max-width: 1120px; margin: 0 auto;
+      padding: 120px 28px;
+      max-width: 1160px; margin: 0 auto;
       text-align: center;
     }
-    .integrations h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px; font-weight: 700; color: var(--dark); margin-bottom: 12px;
+    .int-grid {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      margin-top: 48px;
     }
-    .integrations p { font-size: 16px; color: var(--gray-500); margin-bottom: 48px; }
-    .integrations-logos {
-      display: flex; gap: 48px; justify-content: center; align-items: center; flex-wrap: wrap;
-    }
-    .integration-logo {
-      padding: 16px 32px; border-radius: 12px;
+    .int-chip {
+      padding: 14px 28px; border-radius: 12px;
       border: 1px solid var(--gray-200); background: var(--white);
-      font-size: 16px; font-weight: 600; color: var(--gray-500);
+      font-size: 15px; font-weight: 600; color: var(--gray-700);
+      transition: all 0.2s;
+    }
+    .int-chip:hover {
+      border-color: var(--brand-1); color: var(--brand-1);
+      box-shadow: 0 4px 16px var(--brand-glow);
     }
 
-    /* ── CTA ───────────────────────────────────────────── */
-    .cta {
-      padding: 100px 24px;
-      text-align: center;
-      position: relative;
-    }
+    /* ── CTA ───────────────────────────────────────── */
+    .cta { padding: 100px 28px 120px; text-align: center; }
     .cta-box {
-      max-width: 720px; margin: 0 auto;
-      padding: 64px 48px; border-radius: 24px;
-      background: var(--dark);
+      max-width: 800px; margin: 0 auto;
+      padding: 72px 56px; border-radius: 28px;
+      background: linear-gradient(135deg, var(--accent), var(--dark));
       position: relative; overflow: hidden;
     }
     .cta-box::before {
-      content: ''; position: absolute; top: -100px; right: -100px;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: var(--brand); opacity: 0.1;
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 250px; height: 250px; border-radius: 50%;
+      background: var(--brand-1); opacity: 0.08;
+    }
+    .cta-box::after {
+      content: ''; position: absolute; bottom: -80px; left: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: var(--brand-2); opacity: 0.06;
     }
     .cta-box h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 12px;
-      position: relative;
+      font-size: 36px; font-weight: 800; color: var(--white);
+      margin-bottom: 14px; position: relative; letter-spacing: -0.02em;
     }
     .cta-box p {
-      font-size: 16px; color: var(--gray-400); margin-bottom: 32px;
+      font-size: 17px; color: var(--gray-400); margin-bottom: 36px;
       position: relative;
     }
+    .cta-box .btn-primary { position: relative; font-size: 16px; padding: 16px 40px; }
 
-    /* ── Footer ────────────────────────────────────────── */
+    /* ── Footer ────────────────────────────────────── */
     footer {
-      padding: 48px 24px 32px;
+      padding: 40px 28px;
       border-top: 1px solid var(--gray-200);
       text-align: center;
     }
     footer p { font-size: 13px; color: var(--gray-400); }
+    footer a { color: var(--gray-500); text-decoration: none; }
+    footer a:hover { color: var(--brand-1); }
 
-    /* ── Responsive ────────────────────────────────────── */
-    @media (max-width: 768px) {
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .how-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
       .features-grid { grid-template-columns: 1fr; }
-      .how-steps { grid-template-columns: repeat(2, 1fr); }
-      .hero-stats { flex-direction: column; gap: 24px; }
-      .nav-links { display: none; }
+      .how-steps { grid-template-columns: 1fr; }
+      .metrics-inner { grid-template-columns: 1fr 1fr; }
+      .nav-links .desk { display: none; }
+      .cta-box { padding: 48px 28px; }
     }
 
-    /* ── Animations ────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* ── Animations ────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .animate { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
@@ -270,95 +333,94 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-            <line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
-        </div>
+        <img src="logo.png" alt="Embarcou" width="36" height="36" style="border-radius: 8px;">
         Embarcou
       </a>
       <div class="nav-links">
-        <a href="#features">Funcionalidades</a>
-        <a href="#how">Como funciona</a>
-        <a href="#integrations">Integrações</a>
-        <a href="https://freight-admin-theta.vercel.app/login" class="btn-primary">Acessar painel</a>
+        <a href="#features" class="desk">Funcionalidades</a>
+        <a href="#how" class="desk">Como funciona</a>
+        <a href="#integrations" class="desk">Integrações</a>
+        <a href="https://freight-admin-theta.vercel.app/login" class="btn-nav">Acessar painel →</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="animate">
-      <div class="hero-badge">🚀 Plataforma de frete para e-commerces</div>
+    <div class="reveal">
+      <div class="hero-badge">
+        🚀 <span>Novo</span>&nbsp;&nbsp;Plataforma de frete para e-commerces
+      </div>
     </div>
-    <h1 class="animate delay-1">
-      Seu frete mais <span>inteligente</span>,<br>rápido e barato
+    <h1 class="reveal">
+      Seu frete mais<br><span class="gradient">inteligente</span> começa aqui
     </h1>
-    <p class="animate delay-2">
-      Cotação em milissegundos, regras automáticas e todas as transportadoras em um só lugar. O sistema que transforma sua operação de frete.
+    <p class="reveal">
+      Cotação instantânea, regras automáticas e todas as transportadoras em uma única plataforma. Reduza custos e encante seus clientes.
     </p>
-    <div class="hero-buttons animate delay-3">
-      <a href="https://freight-admin-theta.vercel.app/login" class="btn-primary">Começar agora →</a>
-      <a href="#features" class="btn-secondary">Ver funcionalidades</a>
+    <div class="hero-buttons reveal">
+      <a href="#contact" class="btn-primary">Solicitar demonstração →</a>
+      <a href="#features" class="btn-ghost">Ver funcionalidades</a>
     </div>
-    <div class="hero-stats animate delay-4">
-      <div>
-        <div class="hero-stat-value">&lt;2ms</div>
-        <div class="hero-stat-label">Tempo de cotação</div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="metrics">
+    <div class="metrics-inner reveal">
+      <div class="metric">
+        <div class="metric-value">&lt;2<span class="unit">ms</span></div>
+        <div class="metric-label">Tempo de cotação</div>
       </div>
-      <div>
-        <div class="hero-stat-value">∞</div>
-        <div class="hero-stat-label">Transportadoras</div>
+      <div class="metric">
+        <div class="metric-value">∞</div>
+        <div class="metric-label">Transportadoras</div>
       </div>
-      <div>
-        <div class="hero-stat-value">5</div>
-        <div class="hero-stat-label">Tipos de regra</div>
+      <div class="metric">
+        <div class="metric-value">100<span class="unit">%</span></div>
+        <div class="metric-label">Automatizado</div>
       </div>
-      <div>
-        <div class="hero-stat-value">99.9%</div>
-        <div class="hero-stat-label">Uptime</div>
+      <div class="metric">
+        <div class="metric-value">99.9<span class="unit">%</span></div>
+        <div class="metric-label">Disponibilidade</div>
       </div>
     </div>
   </section>
 
   <!-- Features -->
   <section class="features" id="features">
-    <div class="features-header">
-      <h2>Tudo que você precisa para embarcar</h2>
-      <p>Gerencie toda sua operação de frete em uma única plataforma inteligente</p>
-    </div>
+    <div class="section-label reveal">✦ Funcionalidades</div>
+    <div class="section-title reveal">Tudo que sua operação<br>de frete precisa</div>
+    <div class="section-desc reveal">Do primeiro clique no checkout à entrega na porta do cliente.</div>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon" style="background: #ecfdf5;">⚡</div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: linear-gradient(135deg, #FFF1EB, #FFE4D6);">⚡</div>
         <h3>Cotação inteligente</h3>
-        <p>Cotação em menos de 2ms com cache em memória. Compare preços de todas as transportadoras instantaneamente.</p>
+        <p>Cotação em menos de 2ms com cache em memória. Seus clientes veem o melhor preço instantaneamente no checkout.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background: #fef3c7;">🚛</div>
-        <h3>Gestão de transportadoras</h3>
-        <p>Cadastre qualquer transportadora com upload de planilha. IA analisa e importa automaticamente.</p>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: linear-gradient(135deg, #EDE9FE, #DDD6FE);">🚛</div>
+        <h3>Todas as transportadoras</h3>
+        <p>Cadastre qualquer transportadora via planilha. Nossa IA analisa, mapeia e importa automaticamente os preços.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background: #ede9fe;">🎯</div>
-        <h3>Regras automáticas</h3>
-        <p>Frete grátis, acréscimos, restrições, frete fixo e prazo extra. Configure uma vez, aplica para sempre.</p>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">🎯</div>
+        <h3>Motor de regras</h3>
+        <p>Frete grátis condicional, acréscimos, restrições por CEP, frete fixo promocional e prazos dinâmicos. Regras ilimitadas com prioridade.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background: #dbeafe;">🔗</div>
-        <h3>Integração e-commerce</h3>
-        <p>Conecte com Shopify, WooCommerce, VTEX, Nuvemshop e qualquer plataforma via API.</p>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: linear-gradient(135deg, #DBEAFE, #BFDBFE);">🔗</div>
+        <h3>Integração total</h3>
+        <p>Shopify, WooCommerce, VTEX, Nuvemshop, Tray e qualquer plataforma. API REST documentada para integrações custom.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background: #fce7f3;">📦</div>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: linear-gradient(135deg, #FCE7F3, #FBCFE8);">📦</div>
         <h3>Contratação de frete</h3>
-        <p>Contrate o frete direto pela plataforma. Gere etiquetas e envie NF-e automaticamente.</p>
+        <p>Contrate direto pela plataforma. Geração automática de etiquetas, envio de NF-e e rastreio em tempo real.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background: #f0fdf4;">📊</div>
-        <h3>Painel completo</h3>
-        <p>Dashboard com visão geral, histórico de cotações, auditoria e relatórios detalhados.</p>
+      <div class="f-card reveal">
+        <div class="f-icon" style="background: linear-gradient(135deg, #ECFDF5, #D1FAE5);">📊</div>
+        <h3>Controle total</h3>
+        <p>Dashboard completo, auditoria de cotações, relatórios financeiros e gestão de usuários com permissões granulares.</p>
       </div>
     </div>
   </section>
@@ -366,29 +428,29 @@
   <!-- How it works -->
   <section class="how" id="how">
     <div class="how-inner">
-      <div class="how-header">
-        <h2>Como funciona</h2>
-      </div>
+      <div class="section-label reveal">✦ Como funciona</div>
+      <div class="section-title reveal">Quatro passos para<br>transformar seu frete</div>
+      <div class="section-desc reveal">Setup rápido. Sem migração complexa. Sem dor de cabeça.</div>
       <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-number">1</div>
+        <div class="step reveal">
+          <div class="step-num">01</div>
           <h3>Cadastre transportadoras</h3>
-          <p>Faça upload das planilhas de preço. A IA analisa e importa automaticamente.</p>
+          <p>Upload da planilha de preço. A IA analisa a estrutura e importa tudo automaticamente.</p>
         </div>
-        <div class="how-step">
-          <div class="how-step-number">2</div>
-          <h3>Configure regras</h3>
-          <p>Defina frete grátis, restrições, acréscimos e prazos com condições personalizadas.</p>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3>Configure suas regras</h3>
+          <p>Defina frete grátis, restrições por região, acréscimos e promoções com condições personalizadas.</p>
         </div>
-        <div class="how-step">
-          <div class="how-step-number">3</div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
           <h3>Integre seu e-commerce</h3>
-          <p>Conecte via Shopify Carrier Service ou nossa API REST. Setup em minutos.</p>
+          <p>Conecte via Carrier Service ou API REST. Cotação automática no checkout em minutos.</p>
         </div>
-        <div class="how-step">
-          <div class="how-step-number">4</div>
+        <div class="step reveal">
+          <div class="step-num">04</div>
           <h3>Embarque!</h3>
-          <p>Cotação automática no checkout. Contrate e rastreie fretes pelo painel.</p>
+          <p>Cotação, contratação e rastreio unificados. Sua operação de frete no piloto automático.</p>
         </div>
       </div>
     </div>
@@ -396,71 +458,62 @@
 
   <!-- Integrations -->
   <section class="integrations" id="integrations">
-    <h2>Integramos com qualquer e-commerce</h2>
-    <p>Conecte sua loja em minutos com nossas integrações nativas</p>
-    <div class="integrations-logos">
-      <div class="integration-logo">Shopify</div>
-      <div class="integration-logo">WooCommerce</div>
-      <div class="integration-logo">VTEX</div>
-      <div class="integration-logo">Nuvemshop</div>
-      <div class="integration-logo">Tray</div>
-      <div class="integration-logo">API REST</div>
+    <div class="section-label reveal">✦ Integrações</div>
+    <div class="section-title reveal">Conectamos com<br>qualquer e-commerce</div>
+    <div class="section-desc reveal" style="margin: 0 auto 0;">Integrações nativas ou via API. Seu frete funcionando em minutos.</div>
+    <div class="int-grid">
+      <div class="int-chip reveal">Shopify</div>
+      <div class="int-chip reveal">WooCommerce</div>
+      <div class="int-chip reveal">VTEX</div>
+      <div class="int-chip reveal">Nuvemshop</div>
+      <div class="int-chip reveal">Tray</div>
+      <div class="int-chip reveal">Magento</div>
+      <div class="int-chip reveal">Loja Integrada</div>
+      <div class="int-chip reveal">API REST</div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta">
-    <div class="cta-box">
+  <section class="cta" id="contact">
+    <div class="cta-box reveal">
       <h2>Pronto para embarcar?</h2>
-      <p>Comece a economizar no frete hoje. Setup rápido, sem burocracia.</p>
-      <a href="https://freight-admin-theta.vercel.app/login" class="btn-primary" style="font-size: 16px; padding: 14px 32px;">
-        Criar conta grátis →
+      <p>Solicite uma demonstração e veja como o Embarcou pode<br>transformar a operação de frete do seu e-commerce.</p>
+      <a href="https://freight-admin-theta.vercel.app/login" class="btn-primary">
+        Solicitar demonstração →
       </a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>Embarcou © 2026 — Plataforma inteligente de gestão de frete</p>
+    <p>Embarcou © 2026 — Plataforma inteligente de gestão de frete&nbsp;&nbsp;·&nbsp;&nbsp;<a href="mailto:contato@embarcou.com.br">contato@embarcou.com.br</a></p>
   </footer>
 
   <script>
-    // Nav scroll effect
+    // Nav scroll
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          observer.unobserve(entry.target);
+    // Reveal on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          obs.unobserve(e.target);
         }
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.feature-card, .how-step, .integration-logo').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'all 0.5s ease-out';
-      observer.observe(el);
-    });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Fix: make observed elements visible
-    const obsCallback = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          obsCallback.unobserve(entry.target);
-        }
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.feature-card, .how-step, .integration-logo').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.08}s`;
-      obsCallback.observe(el);
     });
   </script>
 </body>
